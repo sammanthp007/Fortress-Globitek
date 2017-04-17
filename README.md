@@ -2,4 +2,4 @@
 
 Coming Soon...
 
-![Image](walkthrough.gif")
+![Image](walkthrough.gif)
