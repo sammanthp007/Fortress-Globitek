@@ -483,7 +483,9 @@ function find_user_by_id($id=0) {
 function find_users_by_username($username='') {
     global $db;
     $sql = "SELECT * FROM users ";
-    $sql .= "WHERE username = '" . db_escape($db, $username) . "';";
+    // ADD VULNERABILITY
+    // $sql .= "WHERE username = '" . db_escape($db, $username) . "';";
+    $sql .= "WHERE username = '" . $username . "';";
     $users_result = db_query($db, $sql);
     return $users_result;
 }
