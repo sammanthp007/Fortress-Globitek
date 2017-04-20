@@ -105,6 +105,7 @@ CREATE TABLE `users` (
   `last_name` varchar(255) DEFAULT NULL,
   `email` varchar(255) DEFAULT NULL,
   `username` varchar(255) DEFAULT NULL,
+  `hashed_password` varchar(255) DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3;
@@ -113,4 +114,25 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` VALUES (1,'James','Munroe','test@test.com','jmonroe99',NULL);
+INSERT INTO `users` VALUES (1,'James','Munroe','test@test.com','jmonroe99',NULL,NULL);
+INSERT INTO `users` VALUES (2,'randy','orton','randy@orton.com','randyorton','$2y$11$wnwIIRZlHfFg/B/Q9pfovOy0ZUAu191z.pB3mnU/Zy/kAme25g9zu',NOW());
+
+
+DROP TABLE IF EXISTS `failed_logins`;
+CREATE TABLE `failed_logins` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `username` varchar(255) NOT NULL,
+  `count` INT NOT NULL,
+  `last_attempt` DATETIME NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3;
+
+
+DROP TABLE IF EXISTS `secrets`;
+CREATE TABLE `secrets` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `secret` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3;
+
+INSERT INTO `secrets` (id, secret) VALUES (1, '$thisismysecret$');
